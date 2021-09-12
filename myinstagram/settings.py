@@ -79,8 +79,10 @@ WSGI_APPLICATION = 'myinstagram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'insta',
+        'USER': 'zawadi',
+    'PASSWORD':'wadi',
     }
 }
 
@@ -129,7 +131,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 cloudinary.config(
-    api_key = os.environ.get("API_KEY"), 
-    api_secret = os.environ.get("API_SECRET"),
-    cloud_name = os.environ.get("CLOUD_NAME"),
+    api_key ='229921375592722' , 
+    api_secret = 'GD1ytstf5Ry9HJLh9n7jIz8wCGA',
+    cloud_name ='dmtmw7v1e',
 )
+
+LOGIN_REDIRECT_URL = 'main_page'
