@@ -1,7 +1,10 @@
-from django.shortcuts import render,redirect
-from .forms import UserRegisterForm
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import UserRegisterForm,  ProfileUpdateForm
 from .models import Profile
-# Create your views here.
+from instagram.models import Image
+
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -13,3 +16,22 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/registration.html', {"form":form})
+
+
+def profile(request):
+    images = Image.objects.filter(author=request.user).all()
+    profile = Profile.objects.get_or_create(user=request.user)
+    if request.method =='POST':
+        profile_update_form = ProfileUpdateForm(request.POST or None, request.FILES, instance=request.user.profile)
+        if profile_update_form.is_valid():
+            profile_update_form.save()
+            return redirect('profile')
+    else:
+        profile_update_form = ProfileUpdateForm()
+
+    context = {
+        'profile_update_form': profile_update_form,
+        'images':images
+    }
+    return render(request, 'users/profile.html', context)
+
