@@ -1,0 +1,15 @@
+{% extends 'instagram/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class='login'>
+        <h5>Add Comment</h5>
+        <div>
+            <form method ='POST'>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Comment" class= "btn btn-success">
+            </form>
+        </div>
+    </div>
+{% endblock %}
