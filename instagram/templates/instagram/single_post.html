@@ -1,0 +1,28 @@
+{% extends 'instagram/base.html' %}
+
+{% block content %}
+<div class="container singleImage">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- <div class="singleImage"> -->
+                <h4>Name: {{images.image_name}} </h4>
+                <h6>Caption: {{ images.caption }}</h6>
+                <img class="card-img-top " src= "{{ images.image.url}}" alt="image">
+            <!-- </div> -->
+        </div>
+        <div class="col-md-auto">
+            <h5> All Comments </h5>
+            <a href="{% url 'add_comment' images.id %}"><i class="far fa-comment"></i></a>
+            <hr>
+            {% for comment in comments %}
+            <ul>
+                <l>
+                    <a href="{% url 'main_page'%}">{{comment.user }}</a>: {{comment.content}}
+                </l>
+            </ul>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
