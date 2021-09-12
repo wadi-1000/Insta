@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'instagram',
     'users',
     'bootstrap4',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
