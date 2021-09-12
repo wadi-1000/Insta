@@ -1,0 +1,15 @@
+{% extends 'instagram/base.html' %}
+
+{% load static }
+{% block content %}
+<div class='pa'>
+    <h4>If not the Author/owner of {{post}}, You wont be able to Delete nor Update it</h4>
+    <p>Are you sure you want to delete "{{post}}"?</p>
+</div>
+
+<form method="POST" action="{% url 'deletepost' post.id %}">
+    {% csrf_token %}
+    <a href ="{% url 'main_page' %}">Cancel</a>
+    <input type='submit' value="Confrim" name="Confirm">
+</form>
+{% endblock %}
