@@ -1,20 +1,19 @@
 {% extends 'instagram/base.html' %}
-
+{% load static %}
+{% load bootstrap4 %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% block content %}
-<div id="post">
-    <a href="{%url 'new-post'%}"><i class="fas fa-plus-circle"></i>Post</a>
-</div>
 
 
+<div class="container-fluid" style="font-family: 'Kaisei Tokumin';">
 
 {% for post in posts %}
-    <div class="card post" style="width: 40rem;">
-        <div class="update">
-            <a class="btn btn-sm btn-info" href="{% url 'updatepost' post.id %}" style= "height:25px;">Update</a>
-            <a class="btn btn-sm btn-danger" href="{% url 'deletepost' post.id %}" style= "height:25px;">Delete</a>
-        </div>
+
+   
+    <div class="card post" style="width: 40rem; margin: 50px;" >
+        
         <div>
-            <a href="{% url 'profile' %}"> <img class="rounded-circle "  src="{{ user.profile.image.url }}" 
+            <a href="{% url 'profile' %}"> <img class="rounded-circle"  src="{{ user.profile.image.url }}" 
                 style="border-radius: 50%; width:25px; height:25px;" > {{ post.author}}</a>
             <hr>
             <a href="{% url 'single_image' post.id %}"><img class="card-img-top" src= "{{ post.image.url}}" alt="image"></a>
@@ -37,9 +36,14 @@
             <div class='timepass'>
                 {{post.date_posted |timesince }} ago
             </div>
+            <div class="update">
+                <a class="btn btn-sm btn-info" href="{% url 'updatepost' post.id %}" style= "height:25px;">Update</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'deletepost' post.id %}" style= "height:25px;">Delete</a>
+            </div>
 
         </div>
     </div>
     {% endfor %}
+</div>
 {% endblock %}
 

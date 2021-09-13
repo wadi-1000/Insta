@@ -1,11 +1,12 @@
 {%extends 'instagram/base.html'%} 
-
+{% load bootstrap4 %}
 {% block content %}
+<div class="container" style="margin: 40px; padding: 20px;">
 <div class="container search">
 
   <div class="row">
     {% if images%}
-      <h2>Found {{ images|length }} of searched term {{message}}</h2>
+      <h2>Found {{ images|length }} images posted by {{message}}</h2>
     {% else %}
       <h2> Found 0 images for the search term {{message}}</h2>
     {% endif %}
@@ -22,5 +23,6 @@
     {% endfor %}
   {% endif %}
   </div>
+</div>
 </div>
 {% endblock %}

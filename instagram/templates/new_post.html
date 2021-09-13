@@ -3,9 +3,12 @@
 {% load bootstrap4%}
 
 {% block content %}
-    <form class='form'action="{% url 'new-post' %}" method="POST" enctype="multipart/form-data">
+<div class="container" style="margin: 40px; padding: 20px;">
+<legend>Create a new post</legend>
+    <form class='form'action="{% url 'new-post' %}" method="POST" enctype="multipart/form-data" style="padding: 20px;">
         {% csrf_token %}
         {% bootstrap_form form %}
         <input type="submit" class ="btn btn-success btn-lg" value="Post">
     </form>
+</div>
 {% endblock %}

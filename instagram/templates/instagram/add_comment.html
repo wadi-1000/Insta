@@ -1,7 +1,8 @@
 {% extends 'instagram/base.html' %}
 {% load crispy_forms_tags %}
-
+{% load bootstrap4 %}
 {% block content %}
+<div class="container" style="margin: 40px; padding: 20px;">
     <div class='login'>
         <h5>Add Comment</h5>
         <div>
@@ -11,5 +12,6 @@
                 <input type="submit" value="Comment" class= "btn btn-success">
             </form>
         </div>
+    </div>
     </div>
 {% endblock %}

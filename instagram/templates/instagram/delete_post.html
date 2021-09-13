@@ -1,7 +1,8 @@
 {% extends 'instagram/base.html' %}
-
+{% load bootstrap4 %}
 {% load static }
 {% block content %}
+<div class="container" style="margin: 40px; padding: 20px;">
 <div class='pa'>
     <h4>If not the Author/owner of {{post}}, You wont be able to Delete nor Update it</h4>
     <p>Are you sure you want to delete "{{post}}"?</p>
@@ -12,4 +13,5 @@
     <a href ="{% url 'main_page' %}">Cancel</a>
     <input type='submit' value="Confrim" name="Confirm">
 </form>
+</div>
 {% endblock %}
